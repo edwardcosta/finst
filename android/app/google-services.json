@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "638897917034",
+    "project_id": "finst-5d437",
+    "storage_bucket": "finst-5d437.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638897917034:android:798dc94240107690fb4e13",
+        "android_client_info": {
+          "package_name": "br.com.dreamst.finst"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638897917034-j83r74rb1j1sp6rhpque33o58iotdkui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqzBb58jLKVZEGX87trcarsn6ibMMNnck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638897917034-j83r74rb1j1sp6rhpque33o58iotdkui.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "638897917034-mk775gcan9igs2g47b6k86v288snn8ao.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.dreamst.finst.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

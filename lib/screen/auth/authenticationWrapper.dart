@@ -1,5 +1,6 @@
+import 'package:finst/screen/auth/auth.dart';
+import 'package:finst/screen/auth/components/login.dart';
 import 'package:finst/screen/home.dart';
-import 'package:finst/screen/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class AuthenticationWrapper extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.active) {
           User? user = snapshot.data;
           if (user == null) {
-            return LoginPage();
+            return AuthLayout(child: Login());
           } else {
             return HomePage();
           }
