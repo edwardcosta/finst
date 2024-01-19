@@ -1,5 +1,3 @@
-import 'package:finst/screen/auth/auth.dart';
-import 'package:finst/screen/auth/components/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -29,37 +27,32 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextField(
-            controller: _emailController,
-            decoration: const InputDecoration(labelText: 'Email'),
-          ),
-          TextField(
-            controller: _passwordController,
-            decoration: const InputDecoration(labelText: 'Senha'),
-            obscureText: true,
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () => _signInWithEmailAndPassword(context),
-            child: const Text('Entrar'),
-          ),
-          const SizedBox(height: 20),
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => AuthLayout(
-                          child: Signup(),
-                        )),
-              );
-            },
-            child: const Text('Não tem conta? Crie uma.'),
-          ),
-        ],
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 500),
+              child: TextField(
+                controller: _emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+              ),
+            ),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 500),
+              child: TextField(
+                controller: _passwordController,
+                decoration: const InputDecoration(labelText: 'Senha'),
+                obscureText: true,
+              ),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () => _signInWithEmailAndPassword(context),
+              child: const Text('Entrar'),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Finst',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF212332),
+        scaffoldBackgroundColor: const Color(0xFF1B1B1B),
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
             .apply(bodyColor: Colors.white),
         canvasColor: const Color(0xFF2A2D3E),

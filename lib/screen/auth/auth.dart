@@ -11,34 +11,35 @@ class AuthLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Responsive.isMobile(context)) {
-      return Scaffold(
-        body: Stack(
-          children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 200,
-              child: Container(color: Colors.black),
-            ),
-            child,
-          ],
-        ),
-      );
-    }
-    return Scaffold(
+    Widget mobileLayout = Scaffold(
+      body: Stack(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 200,
+            child: Container(color: Colors.black),
+          ),
+          child,
+        ],
+      ),
+    );
+
+    Widget desktopLayout = Scaffold(
       body: Row(
         children: [
           Flexible(
-              flex: 1,
+              flex: 3,
               child: Container(
                 color: Colors.black,
               )),
           Flexible(
-            flex: 1,
+            flex: 5,
             child: child,
           ),
         ],
       ),
     );
+
+    return Responsive(mobile: mobileLayout, desktop: desktopLayout);
   }
 }
