@@ -15,10 +15,12 @@ class AuthLayout extends StatelessWidget {
       body: Stack(
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 200,
-            child: Container(color: Colors.black),
-          ),
+              width: MediaQuery.of(context).size.width,
+              height: 200,
+              child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  clipBehavior: Clip.hardEdge,
+                  child: Image.asset('assets/images/finst-image.jpg'))),
           child,
         ],
       ),
@@ -29,11 +31,14 @@ class AuthLayout extends StatelessWidget {
         children: [
           Flexible(
               flex: 3,
-              child: Container(
-                color: Colors.black,
-              )),
+              child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: FittedBox(
+                      fit: BoxFit.fitHeight,
+                      clipBehavior: Clip.hardEdge,
+                      child: Image.asset('assets/images/finst-image.jpg')))),
           Flexible(
-            flex: 5,
+            flex: 4,
             child: child,
           ),
         ],

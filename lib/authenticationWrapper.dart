@@ -1,6 +1,6 @@
 import 'package:finst/screen/auth/auth.dart';
 import 'package:finst/screen/auth/components/login.dart';
-import 'package:finst/screen/home.dart';
+import 'package:finst/screen/home/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
