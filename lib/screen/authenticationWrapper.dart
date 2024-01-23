@@ -17,7 +17,7 @@ class AuthenticationWrapper extends StatelessWidget {
           if (user == null) {
             return AuthLayout(child: Login());
           } else {
-            return HomePage();
+            return const HomePage();
           }
         }
         return const Scaffold(
