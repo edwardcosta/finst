@@ -1,21 +1,27 @@
+import 'package:finst/screen/home/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class Dashboard extends StatelessWidget {
+  final Controller controller = Get.find();
 
-  @override
-  _DashboardState createState() => _DashboardState();
-}
+  Dashboard({super.key});
 
-class _DashboardState extends State<Dashboard> {
-  bool dataLoaded = false;
-
-  // Simulate loading data
   Future<void> loadData() async {
+    controller.dataLoaded.value = false;
     await Future.delayed(const Duration(seconds: 2));
-    setState(() {
-      dataLoaded = true;
-    });
+    controller.dataLoaded.value = true;
+  }
+
+  Widget _bodyBuild(bool dataLoaded) {
+    if (!dataLoaded) {
+      return const CircularProgressIndicator();
+    }
+    // Your dashboard widgets go here
+    return const Text(
+      'Data loaded! Your super cool dashboard is ready.',
+      style: TextStyle(fontSize: 18),
+    );
   }
 
   @override
@@ -26,14 +32,7 @@ class _DashboardState extends State<Dashboard> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (!dataLoaded)
-              const CircularProgressIndicator()
-            else
-              // Your dashboard widgets go here
-              const Text(
-                'Data loaded! Your super cool dashboard is ready.',
-                style: TextStyle(fontSize: 18),
-              ),
+            Obx(() => _bodyBuild(controller.dataLoaded.value)),
           ],
         ),
       ),

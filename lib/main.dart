@@ -2,6 +2,7 @@ import 'package:finst/screen/authenticationWrapper.dart';
 import 'package:finst/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
@@ -18,8 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return GetMaterialApp(
       title: 'Finst',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color(0xFF1B1B1B),

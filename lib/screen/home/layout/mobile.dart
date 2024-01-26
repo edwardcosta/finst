@@ -1,15 +1,12 @@
 import 'package:finst/screen/home/components/dashboard.dart';
+import 'package:finst/screen/home/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class MobileLayout extends StatefulWidget {
-  const MobileLayout({super.key});
+class MobileLayout extends StatelessWidget {
+  final Controller controller = Get.put(Controller());
 
-  @override
-  State<MobileLayout> createState() => _MobileLayoutState();
-}
-
-class _MobileLayoutState extends State<MobileLayout> {
-  int currentIndex = 0;
+  MobileLayout({super.key});
 
   Widget _bodyBuild(int index) {
     if (index == 1) {
@@ -22,7 +19,7 @@ class _MobileLayoutState extends State<MobileLayout> {
         color: Colors.yellowAccent,
       );
     }
-    return const Dashboard();
+    return Dashboard();
   }
 
   @override
@@ -38,34 +35,30 @@ class _MobileLayoutState extends State<MobileLayout> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TextButton(
               child: const Text("Home"),
-              onPressed: () => setState(() {
-                currentIndex = 0;
-              }),
+              onPressed: () => controller.setIndex(0),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TextButton(
               child: const Text("Another"),
-              onPressed: () => setState(() {
-                currentIndex = 1;
-              }),
+              onPressed: () => controller.setIndex(1),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TextButton(
               child: const Text("Profile"),
-              onPressed: () => setState(() {
-                currentIndex = 2;
-              }),
+              onPressed: () => controller.setIndex(2),
             ),
           ),
         ],
       ),
     );
 
-    return Column(
-        children: [Expanded(child: _bodyBuild(currentIndex)), navigationBar]);
+    return Column(children: [
+      Expanded(child: Obx(() => _bodyBuild(controller.currentIndex.value))),
+      navigationBar
+    ]);
   }
 }

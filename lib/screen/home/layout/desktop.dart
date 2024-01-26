@@ -1,7 +1,74 @@
 import 'package:finst/screen/home/components/dashboard.dart';
+import 'package:finst/screen/home/controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+class DesktopLayout extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final Controller controller = Get.put(Controller());
+
+  DesktopLayout({super.key});
+
+  Future<void> _signOut(BuildContext context) async {
+    await _auth.signOut();
+  }
+
+  Widget _bodyBuild(int index) {
+    if (index == 1) {
+      return Container(
+        color: Colors.green,
+      );
+    }
+    if (index == 2) {
+      return Container(
+        color: Colors.yellowAccent,
+      );
+    }
+    return Dashboard();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Widget navigationBar = Container(
+      color: Colors.deepPurple,
+      height: 100.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            child: TextButton(
+              child: const Text("Home"),
+              onPressed: () => controller.setIndex(0),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            child: TextButton(
+              child: const Text("Another"),
+              onPressed: () => controller.setIndex(1),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50.0),
+            child: TextButton(
+              child: const Text("Profile"),
+              onPressed: () => controller.setIndex(2),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    return Column(children: [
+      navigationBar,
+      Expanded(child: Obx(() => _bodyBuild(controller.currentIndex.value)))
+    ]);
+  }
+}
+/*
 class DesktopLayout extends StatefulWidget {
   const DesktopLayout({super.key});
 
@@ -76,3 +143,4 @@ class _DesktopLayoutState extends State<DesktopLayout> {
         children: [navigationBar, Expanded(child: _bodyBuild(currentIndex))]);
   }
 }
+*/

@@ -1,15 +1,12 @@
 import 'package:finst/screen/home/components/dashboard.dart';
+import 'package:finst/screen/home/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class TabletLayout extends StatefulWidget {
-  const TabletLayout({super.key});
+class TabletLayout extends StatelessWidget {
+  final Controller controller = Get.put(Controller());
 
-  @override
-  State<TabletLayout> createState() => _TabletLayoutState();
-}
-
-class _TabletLayoutState extends State<TabletLayout> {
-  int currentIndex = 0;
+  TabletLayout({super.key});
 
   Widget _bodyBuild(int index) {
     if (index == 1) {
@@ -22,7 +19,7 @@ class _TabletLayoutState extends State<TabletLayout> {
         color: Colors.yellowAccent,
       );
     }
-    return const Dashboard();
+    return Dashboard();
   }
 
   @override
@@ -38,27 +35,21 @@ class _TabletLayoutState extends State<TabletLayout> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TextButton(
               child: const Text("Home"),
-              onPressed: () => setState(() {
-                currentIndex = 0;
-              }),
+              onPressed: () => controller.setIndex(1),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TextButton(
               child: const Text("Another"),
-              onPressed: () => setState(() {
-                currentIndex = 1;
-              }),
+              onPressed: () => controller.setIndex(1),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: TextButton(
               child: const Text("Profile"),
-              onPressed: () => setState(() {
-                currentIndex = 2;
-              }),
+              onPressed: () => controller.setIndex(2),
             ),
           ),
         ],
@@ -66,7 +57,10 @@ class _TabletLayoutState extends State<TabletLayout> {
     );
 
     return Row(
-      children: [navigationBar, Expanded(child: _bodyBuild(currentIndex))],
+      children: [
+        navigationBar,
+        Expanded(child: Obx(() => _bodyBuild(controller.currentIndex.value)))
+      ],
     );
   }
 }
