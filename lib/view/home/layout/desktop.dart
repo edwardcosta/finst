@@ -1,18 +1,12 @@
-import 'package:finst/screen/home/components/dashboard.dart';
-import 'package:finst/screen/home/controller.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:finst/view/home/components/dashboard.dart';
+import 'package:finst/controller/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DesktopLayout extends StatelessWidget {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   final Controller controller = Get.put(Controller());
 
   DesktopLayout({super.key});
-
-  Future<void> _signOut(BuildContext context) async {
-    await _auth.signOut();
-  }
 
   Widget _bodyBuild(int index) {
     if (index == 1) {

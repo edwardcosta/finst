@@ -1,7 +1,7 @@
 import 'package:finst/responsive.dart';
-import 'package:finst/screen/home/layout/desktop.dart';
-import 'package:finst/screen/home/layout/mobile.dart';
-import 'package:finst/screen/home/layout/tablet.dart';
+import 'package:finst/view/home/layout/desktop.dart';
+import 'package:finst/view/home/layout/mobile.dart';
+import 'package:finst/view/home/layout/tablet.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

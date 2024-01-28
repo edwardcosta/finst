@@ -1,5 +1,5 @@
-import 'package:finst/screen/home/components/dashboard.dart';
-import 'package:finst/screen/home/controller.dart';
+import 'package:finst/view/home/components/dashboard.dart';
+import 'package:finst/controller/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
