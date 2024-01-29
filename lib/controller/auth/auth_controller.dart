@@ -36,6 +36,7 @@ class AuthController extends GetxController {
     } catch (firebaseAuthException) {
       Get.showSnackbar(const GetSnackBar(
         message: 'Falha no login.',
+        duration: Duration(seconds: 3),
       ));
     }
   }

@@ -1,4 +1,4 @@
-import 'package:finst/view/home/components/dashboard.dart';
+import 'package:finst/constants.dart';
 import 'package:finst/controller/home/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,20 +7,6 @@ class TabletLayout extends StatelessWidget {
   final Controller controller = Get.put(Controller());
 
   TabletLayout({super.key});
-
-  Widget _bodyBuild(int index) {
-    if (index == 1) {
-      return Container(
-        color: Colors.green,
-      );
-    }
-    if (index == 2) {
-      return Container(
-        color: Colors.yellowAccent,
-      );
-    }
-    return Dashboard();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +21,9 @@ class TabletLayout extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextButton(
-                child: const Text("Home"),
-                onPressed: () => controller.setIndex(0),
+                child: Text(AppStrings.navgiationHome),
+                onPressed: () =>
+                    controller.setIndex(NavigationIndex.home.index),
               ),
             ),
           ),
@@ -44,8 +31,9 @@ class TabletLayout extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextButton(
-                child: const Text("Another"),
-                onPressed: () => controller.setIndex(1),
+                child: Text(AppStrings.navgiationSettings),
+                onPressed: () =>
+                    controller.setIndex(NavigationIndex.settings.index),
               ),
             ),
           ),
@@ -53,8 +41,9 @@ class TabletLayout extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: TextButton(
-                child: const Text("Profile"),
-                onPressed: () => controller.setIndex(2),
+                child: Text(AppStrings.navgiationProfile),
+                onPressed: () =>
+                    controller.setIndex(NavigationIndex.profile.index),
               ),
             ),
           ),
@@ -65,7 +54,7 @@ class TabletLayout extends StatelessWidget {
     return Row(
       children: [
         navigationBar,
-        Expanded(child: Obx(() => _bodyBuild(controller.currentIndex.value)))
+        Expanded(child: Obx(() => controller.bodyBuild()))
       ],
     );
   }

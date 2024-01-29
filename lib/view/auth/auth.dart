@@ -26,22 +26,26 @@ class AuthLayout extends StatelessWidget {
       ],
     );
 
-    Widget desktopLayout = Row(
+    Widget desktopLayout = Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Flexible(
-            flex: 3,
-            child: SizedBox(
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            SizedBox(
                 height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width * 0.35,
                 child: FittedBox(
                     fit: BoxFit.fitHeight,
                     clipBehavior: Clip.hardEdge,
-                    child: Image.asset('assets/images/finst-image.jpg')))),
-        Flexible(
-          flex: 4,
-          child: LayoutBuilder(
-            builder: (context, constraints) =>
-                Login().build(context, constraints),
-          ),
+                    child: Image.asset('assets/images/finst-image.jpg'))),
+            LayoutBuilder(
+              builder: (context, constraints) => SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width * 0.65,
+                  child: Login().build(context, constraints)),
+            ),
+          ],
         ),
       ],
     );

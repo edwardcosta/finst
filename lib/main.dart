@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Finst',
+      title: AppStrings.appName,
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color(0xFF1B1B1B),
+        scaffoldBackgroundColor: AppColors.backgound,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-            .apply(bodyColor: Colors.white),
-        canvasColor: const Color(0xFF2A2D3E),
+            .apply(bodyColor: AppColors.textBody),
+        canvasColor: AppColors.canvas,
       ),
       home: const CircularProgressIndicator(),
     );
